@@ -1,8 +1,4 @@
-This Docker file builds the [Kaia.ai](https://kaia.ai/) robot software platform image.
-
-Please find the description, setup and operation details [here](https://github.com/kaiaai/kaiaai).
-
-A pre-built Docker image is available at [Docker Hub](https://hub.docker.com/r/kaiaai/kaiaai)
+A pre-built Docker image is available at [Docker Hub](https://hub.docker.com/repository/docker/kalmanrobotics/kalman-kit/general)
 
 ## Re-building the Docker image
 If you would like to modify and/or rebuild this image:
@@ -10,6 +6,14 @@ If you would like to modify and/or rebuild this image:
 - optionally, edit the Dockerfile as you wish
 - run the command below to build the Docker image using ROS2 `iron` release:
 
+
+1. Reconstruir la imagen **Sin cache**
 ```
-docker build --no-cache -t kalman/kalman:humble --build-arg distro_tag=humble .
+cd docker\kalman
+docker build --no-cache -t kalmanrobotics/kalman-kit:humble --build-arg distro_tag=humble .
+```
+2. Reconstruir la imagen **Con cache**
+```
+cd docker\kalman
+docker build  -t kalmanrobotics/kalman-kit:humble --build-arg distro_tag=humble .
 ```

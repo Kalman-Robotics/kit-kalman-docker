@@ -1,9 +1,12 @@
-ARG distro_tag=iron
+ARG distro_tag=humble
 FROM osrf/ros:$distro_tag-desktop
 
-WORKDIR /uros_ws
+WORKDIR /kalman_ws
 
-RUN git clone --depth 1 -b 30377bbd86ff7ea93ca69a3b37997fd235385e1f https://github.com/micro-ROS/micro-ROS-Agent.git src/micro-ROS-Agent \
+RUN git clone https://github.com/micro-ROS/micro-ROS-Agent src/micro-ROS-Agent \
+&&  cd src/micro-ROS-Agent \
+&&  git checkout 30377bbd86ff7ea93ca69a3b37997fd235385e1f \
+&&  cd /kalman_ws \
 &&  . /opt/ros/$ROS_DISTRO/setup.sh \
 &&  apt update \
 &&  apt install -y ed python3-pip \
@@ -13,8 +16,6 @@ RUN git clone --depth 1 -b 30377bbd86ff7ea93ca69a3b37997fd235385e1f https://gith
 &&  rosdep install --from-paths src --ignore-src -y \
 &&  colcon build \
 &&  . install/local_setup.sh \
-&&  ros2 run micro_ros_setup create_agent_ws.sh \
-&&  ros2 run micro_ros_setup build_agent.sh \
 &&  rm -rf log/ build/ src/
 
 # Disable shared memory
@@ -32,14 +33,14 @@ ros-$ROS_DISTRO-nav2-map-server ros-$ROS_DISTRO-nav2-bringup \
 ros-$ROS_DISTRO-joint-state-publisher ros-$ROS_DISTRO-xacro
 # &&  pip3 install aiortc aiohttp opencv-python
 
-RUN apt install -y ros-iron-navigation2 ros-iron-nav2-bringup
+RUN apt install -y ros-$ROS_DISTRO-navigation2 ros-$ROS_DISTRO-nav2-bringup
 # ros-iron-nav2-route
 
 RUN apt update && apt upgrade -y
 
 RUN . /opt/ros/$ROS_DISTRO/setup.sh \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kalman_interfaces src/kalman_interfaces \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kit_kalman_ros2 src/kit_kalman_ros2 \
+&&  git clone https://github.com/kalman-robotics/kalman_interfaces.git src/kalman_interfaces \
+&&  git clone https://github.com/Kalman-Robotics/kit-kalman-ros2.git src/kit-kalman-ros2 \
 &&  rosdep update --rosdistro $ROS_DISTRO \
 &&  rosdep install --from-paths src --ignore-src -y \
 &&  colcon build --symlink-install \
@@ -54,7 +55,7 @@ RUN echo ". /ros_ws/install/setup.bash" >> ~/.bashrc
 RUN echo "alias kalman='ros2 run kalman cli'" >> ~/.bashrc
 
 RUN rm /*.sh
-COPY ./kalan-entrypoint.sh /
+COPY ./kalman-entrypoint.sh /
 COPY ./.bash_history /root
 
 RUN DEBIAN_FRONTEND=noninteractive apt install -y tigervnc-standalone-server xfce4 xfce4-terminal \
