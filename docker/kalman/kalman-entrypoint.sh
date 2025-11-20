@@ -11,7 +11,7 @@ if [ "$MICROROS_DISABLE_SHM" = "1" ] ; then
 fi
 
 if [ "$1" = "launch" ]; then
-  exec ros2 launch kaiaai_bringup physical.launch.py
+  exec ros2 launch kalman_bringup physical.launch.py
 # TODO pass remaining Docker command line params to micro_ros_agent
 # exec ros2 run micro_ros_agent micro_ros_agent "$@"
 # ros2 run micro_ros_agent micro_ros_agent udp4 -p 8888

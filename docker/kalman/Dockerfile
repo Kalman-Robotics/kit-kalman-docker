@@ -3,7 +3,7 @@ FROM osrf/ros:$distro_tag-desktop
 
 WORKDIR /uros_ws
 
-RUN git clone --depth 1 -b $ROS_DISTRO https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup \
+RUN git clone --depth 1 -b 30377bbd86ff7ea93ca69a3b37997fd235385e1f https://github.com/micro-ROS/micro-ROS-Agent.git src/micro-ROS-Agent \
 &&  . /opt/ros/$ROS_DISTRO/setup.sh \
 &&  apt update \
 &&  apt install -y ed python3-pip \
@@ -38,10 +38,10 @@ RUN apt install -y ros-iron-navigation2 ros-iron-nav2-bringup
 RUN apt update && apt upgrade -y
 
 RUN . /opt/ros/$ROS_DISTRO/setup.sh \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kalman_interfaces src/kaiaai_msgs \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kit_kalman_ros2 src/kaiaai \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kaiaai_telemetry src/kaiaai_telemetry \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kaiaai_bringup src/kaiaai_bringup \
+&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kalman_interfaces src/kalman_interfaces \
+&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kit_kalman_ros2 src/kit_kalman_ros2 \
+&&  rosdep update --rosdistro $ROS_DISTRO \
+&&  rosdep install --from-paths src --ignore-src -y \
 &&  colcon build --symlink-install \
 &&  rm -rf log/
 # rm -rf build/
@@ -51,10 +51,10 @@ RUN echo ". /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
 RUN echo ". /uros_ws/install/setup.bash" >> ~/.bashrc
 RUN echo ". /ros_ws/install/setup.bash" >> ~/.bashrc
 # RUN echo "export KAIAAI_ROBOT=makerspet_snoopy" >> ~/.bashrc
-RUN echo "alias kaia='ros2 run kaiaai cli'" >> ~/.bashrc
+RUN echo "alias kalman='ros2 run kalman cli'" >> ~/.bashrc
 
 RUN rm /*.sh
-COPY ./kaiaai-entrypoint.sh /
+COPY ./kalan-entrypoint.sh /
 COPY ./.bash_history /root
 
 RUN DEBIAN_FRONTEND=noninteractive apt install -y tigervnc-standalone-server xfce4 xfce4-terminal \
@@ -66,5 +66,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y tigervnc-standalone-server xfc
 
 EXPOSE 8888/udp
 # EXPOSE 5601/tcp
-ENTRYPOINT ["/bin/sh", "/kaiaai-entrypoint.sh"]
+ENTRYPOINT ["/bin/sh", "/kalman-entrypoint.sh"]
 CMD ["bash"]
