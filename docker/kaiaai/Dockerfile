@@ -23,7 +23,7 @@ COPY disable_fastdds_shm.xml disable_fastdds_shm_localhost_only.xml /tmp/
 ENV RMW_IMPLEMENTATION=rmw_fastrtps_cpp
 ENV MICROROS_DISABLE_SHM=1
 
-WORKDIR /ros_ws
+WORKDIR /kalman_ws
 
 RUN apt install -y python3-pip nano inotify-tools \
 ros-$ROS_DISTRO-gazebo-ros-pkgs ros-$ROS_DISTRO-joint-state-publisher-gui \
@@ -38,21 +38,10 @@ RUN apt install -y ros-iron-navigation2 ros-iron-nav2-bringup
 RUN apt update && apt upgrade -y
 
 RUN . /opt/ros/$ROS_DISTRO/setup.sh \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kaiaai/kaiaai_msgs src/kaiaai_msgs \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kaiaai/kaiaai src/kaiaai \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kaiaai/kaiaai_telemetry src/kaiaai_telemetry \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kaiaai/kaiaai_teleop src/kaiaai_teleop \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kaiaai/kaiaai_bringup src/kaiaai_bringup \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/makerspet/makerspet_fido src/makerspet_fido \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/makerspet/makerspet_loki src/makerspet_loki \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/makerspet/makerspet_snoopy src/makerspet_snoopy \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/makerspet/makerspet_mini src/makerspet_mini \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/makerspet/makerspet src/makerspet \
-&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kaiaai/kaiaai_gazebo src/kaiaai_gazebo \
-&&  git clone --depth 1 https://github.com/kaiaai/kaiaai_apps src/kaiaai_apps \
-&&  git clone --depth 1 https://github.com/kaiaai/m-explore-ros2 src/m-explore-ros2 \
-&&  git clone --depth 1 https://github.com/kaiaai/auto_mapper src/auto_mapper \
-&&  git clone --depth 1 https://github.com/kaiaai/nav2_wfe src/nav2_wfe \
+&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kalman_interfaces src/kaiaai_msgs \
+&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kit_kalman_ros2 src/kaiaai \
+&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kaiaai_telemetry src/kaiaai_telemetry \
+&&  git clone -b $ROS_DISTRO --depth 1 https://github.com/kalmanrobotics/kaiaai_bringup src/kaiaai_bringup \
 &&  colcon build --symlink-install \
 &&  rm -rf log/
 # rm -rf build/

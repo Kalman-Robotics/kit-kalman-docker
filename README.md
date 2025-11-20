@@ -12,7 +12,7 @@ Three ways to install:
 ## Install on Ubuntu PC directly
 Make sure your Ubuntu version is 22.x
 ```
-git clone --depth 1 https://github.com/kaiaai/install
+git clone --depth 1 https://github.com/kalmanrobotics/install
 cd install/ubuntu
 source install_ros2_iron_ubuntu_22_04.sh
 source install_kaiaai_iron_ubuntu_22_04.sh

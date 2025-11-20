@@ -11,5 +11,5 @@ If you would like to modify and/or rebuild this image:
 - run the command below to build the Docker image using ROS2 `iron` release:
 
 ```
-docker build --no-cache -t kaiaai/kaiaai:iron --build-arg distro_tag=iron .
+docker build --no-cache -t kalman/kalman:humble --build-arg distro_tag=humble .
 ```
