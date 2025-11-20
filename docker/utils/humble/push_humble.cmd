@@ -1,0 +1,1 @@
+docker push kaiaai/kaiaai:humble
