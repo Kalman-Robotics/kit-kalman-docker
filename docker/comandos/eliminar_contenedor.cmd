@@ -1,0 +1,6 @@
+@echo off
+echo Deteniendo contenedor nexus...
+docker stop nexus 2>nul
+echo Eliminando contenedor nexus...
+docker rm nexus 2>nul
+echo Listo!

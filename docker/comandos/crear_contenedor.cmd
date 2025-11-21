@@ -1,0 +1,2 @@
+@echo off
+docker run --name nexus -it --rm -p 8888:8888/udp -p 4430:4430/tcp -e DISPLAY=host.docker.internal:0.0 -e LIBGL_ALWAYS_INDIRECT=0 kalmanrobotics/kalman-kit:humble

@@ -36,7 +36,7 @@ source install_kaiaai_iron_ubuntu_22_04.sh
 
 On Ubuntu you can run
 ```
-git clone --depth 1 https://github.com/kaiaai/install
+git clone --depth 1 https://github.com/install
 cd install/utils
 source install_docker_on_ubuntu.sh
 ```

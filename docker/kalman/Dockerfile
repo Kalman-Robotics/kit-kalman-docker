@@ -49,14 +49,9 @@ RUN . /opt/ros/$ROS_DISTRO/setup.sh \
 # &&  git clone --depth 1 https://github.com/kaiaai/kaiaai_web src/kaiaai_web \
 
 RUN echo ". /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
-RUN echo ". /uros_ws/install/setup.bash" >> ~/.bashrc
-RUN echo ". /ros_ws/install/setup.bash" >> ~/.bashrc
+RUN echo ". /kalman_ws/install/setup.bash" >> ~/.bashrc
 # RUN echo "export KAIAAI_ROBOT=makerspet_snoopy" >> ~/.bashrc
 RUN echo "alias kalman='ros2 run kalman cli'" >> ~/.bashrc
-
-RUN rm /*.sh
-COPY ./kalman-entrypoint.sh /
-COPY ./.bash_history /root
 
 RUN DEBIAN_FRONTEND=noninteractive apt install -y tigervnc-standalone-server xfce4 xfce4-terminal \
 &&  mkdir ~/.vnc \
@@ -64,6 +59,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt install -y tigervnc-standalone-server xfc
 &&  chmod +x ~/.vnc/xstartup \
 &&  apt autoremove -y \
 &&  rm -rf /var/lib/apt/lists/*
+
+
+RUN rm /*.sh
+COPY ./kalman-entrypoint.sh /
+COPY ./.bash_history /root
+
 
 EXPOSE 8888/udp
 # EXPOSE 5601/tcp
