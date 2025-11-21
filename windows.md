@@ -15,7 +15,8 @@ git clone https://github.com/kalman-robotics/kit-kalman-install kalman
 cd C:\kalman\docker\comandos
 ```
 
-## 4. Descargar imagen Docker
+## 4. Descargar imagen 
+Para ejecutar esto, ten abierto el docker desktop.
 ```cmd
 docker pull kalmanrobotics/kalman-kit:humble
 ```
@@ -31,4 +32,8 @@ C:\kalman\docker\comandos\crear_contenedor.cmd
 ```cmd
 C:\kalman\docker\comandos\eliminar_contenedor.cmd
 ```
+
+## Ahora ya puedes hacer el uso del robo
+
+
 
