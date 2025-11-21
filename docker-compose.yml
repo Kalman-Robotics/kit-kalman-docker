@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  nexus:
+    image: kalmanrobotics/kalman-kit:humble
+    container_name: nexus
+    stdin_open: true
+    tty: true
+
+    ports:
+      - "8888:8888/udp"
+      - "4430:4430/tcp"
+
+    environment:
+      - DISPLAY=host.docker.internal:0.0
+      - LIBGL_ALWAYS_INDIRECT=0
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+      - MICROROS_DISABLE_SHM=1
+
+    privileged: true
+
+    cap_add:
+      - SYS_PTRACE
+
+    security_opt:
+      - seccomp:unconfined
+
+    network_mode: bridge
+
+    entrypoint: /bin/bash
+    command: -c "while sleep 1000; do :; done"
