@@ -39,18 +39,16 @@ RUN apt install -y ros-$ROS_DISTRO-navigation2 ros-$ROS_DISTRO-nav2-bringup
 RUN apt update && apt upgrade -y
 
 RUN . /opt/ros/$ROS_DISTRO/setup.sh \
-&&  git clone https://github.com/kalman-robotics/kalman_interfaces.git src/kalman_interfaces \
-&&  git clone https://github.com/Kalman-Robotics/kit-kalman-ros2.git src/kit-kalman-ros2 \
+# &&  git clone https://github.com/kalman-robotics/kalman_interfaces.git src/kalman_interfaces \
+&&  git clone --recurse-submodules https://github.com/Kalman-Robotics/kit-kalman-ros2.git src/kit-kalman-ros2 \
 &&  rosdep update --rosdistro $ROS_DISTRO \
 &&  rosdep install --from-paths src --ignore-src -y \
 &&  colcon build --symlink-install \
 &&  rm -rf log/
-# rm -rf build/
-# &&  git clone --depth 1 https://github.com/kaiaai/kaiaai_web src/kaiaai_web \
 
 RUN echo ". /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
 RUN echo ". /kalman_ws/install/setup.bash" >> ~/.bashrc
-# RUN echo "export KAIAAI_ROBOT=makerspet_snoopy" >> ~/.bashrc
+RUN echo "export KALMAN_ROBOT=kalman_description" >> ~/.bashrc
 RUN echo "alias kalman='ros2 run kalman cli'" >> ~/.bashrc
 
 RUN DEBIAN_FRONTEND=noninteractive apt install -y tigervnc-standalone-server xfce4 xfce4-terminal \
