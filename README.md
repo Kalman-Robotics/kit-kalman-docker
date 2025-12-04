@@ -5,11 +5,9 @@ Este repositorio contiene instrucciones para levantar un Docker donde ejecutar e
 - [kit-kalman-docker](#kit-kalman-docker)
   - [Consideraciones previas:](#consideraciones-previas)
   - [Requisitos:](#requisitos)
-  - [Uso rápido:](#uso-rápido)
-  - [Guías:](#guías)
-  - [Imagenes Docker pre-construidas](#imagenes-docker-pre-construidas)
-    - [Linux](#linux)
-    - [Windows](#windows)
+  - [Uso:](#uso)
+  - [Guías para iniciar contenedor Docker:](#guías-para-iniciar-contenedor-docker)
+  - [Anexos](#anexos)
 
 ## Consideraciones previas:
 - Si utiliza Ubuntu 22.04, no es necesario que utilice docker, siempre y cuando tenga instalado ROS2 Humble y micro-ROS. Caso contrario, puede seguir las instrucciones de este repositorio.
@@ -20,20 +18,15 @@ Este repositorio contiene instrucciones para levantar un Docker donde ejecutar e
 - Git
 - Conocimientos básicos de terminal/powershell
 
-## Uso rápido:
+## Uso:
 1. Clonar o descargar el repositorio.
 2. Abrir la guía correspondiente a tu sistema operativo.
-3. Seguir las instrucciones para construir la imagen y ejecutar el contenedor.
+3. Seguir una de las guías para construir la imagen o usar una pre-construida e iniciar el contenedor.
+4. Siga las [instrucciones del repositorio de ROS2](https://github.com/Kalman-Robotics/kit-kalman-ros2) para ejecutar el agente micro-ROS y paquetes del robot como telemetría, teleoperación, mapeo, navegación, etc.
 
-## Guías:
+## Guías para iniciar contenedor Docker:
 - [Ubuntu](ubuntu.md)
 - [Windows](windows.md)
 
-## Imagenes Docker pre-construidas
-### Linux
-- Image: `kalmanrobotics/kalman-kit:linux-latest`
-- Command: `docker pull kalmanrobotics/kalman-kit:linux-latest`
-
-### Windows
-- Image: `kalmanrobotics/kalman-kit:windows-latest`
-- Command: `docker pull kalmanrobotics/kalman-kit:windows-latest`
+## Anexos
+- [Docker Hub de Kalman Robotics con imágenes pre-construidas](https://hub.docker.com/r/kalmanrobotics/kalman-kit/tags)

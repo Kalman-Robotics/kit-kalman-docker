@@ -5,7 +5,9 @@
   - [2. Clonar repositorio](#2-clonar-repositorio)
   - [3. Descargar imagen Docker](#3-descargar-imagen-docker)
   - [4. Configurar X11 (para GUI)](#4-configurar-x11-para-gui)
-  - [5. Crear y ejecutar contenedor](#5-crear-y-ejecutar-contenedor)
+  - [5. Uso](#5-uso)
+    - [Opción A/B: Crear y ejecutar contenedor](#opción-ab-crear-y-ejecutar-contenedor)
+    - [Opción C: Hacer uso del Dev Container (RECOMENDADO)](#opción-c-hacer-uso-del-dev-container-recomendado)
   - [Comandos útiles](#comandos-útiles)
 
 ## 1. Instalar Docker
@@ -39,12 +41,19 @@ docker pull kalmanrobotics/kalman-kit:linux-latest
 docker load -i /media/USB/kalman-kit-humble.tar
 ```
 
+**Opción C: Construir imagen localmente (RECOMENDADO)**
+- Abrir el proyecto en VSCode
+- Presionar `Ctrl+Shift+P` y seleccionar `Dev Containers: Rebuild and Reopen in Container`
+- Seleccionar la opción que incluya la palabra `linux`
+- Esperar a que se construya la imagen (puede tardar un rato)
+
 ## 4. Configurar X11 (para GUI)
 ```bash
 xhost +local:docker
 ```
 
-## 5. Crear y ejecutar contenedor
+## 5. Uso
+### Opción A/B: Crear y ejecutar contenedor
 ```bash
 docker run --name nexus -it --rm \
   -p 8888:8888/udp \
@@ -53,6 +62,11 @@ docker run --name nexus -it --rm \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   kalmanrobotics/kalman-kit:humble
 ```
+### Opción C: Hacer uso del Dev Container (RECOMENDADO)
+- Abrir el proyecto en VSCode
+- Presionar `Ctrl+Shift+P` y seleccionar `Dev Containers: Reopen in Container`
+- Seleccionar la opción que incluya la palabra `linux`
+- Cuando se inicie el contenedor, abrir una terminal integrada (`Ctrl+j`)
 
 ## Comandos útiles
 

@@ -10,14 +10,19 @@ Si desea modificar y/o reconstruir esta imagen:
   cd docker\kalman
   docker build --no-cache -t kalmanrobotics/kalman-kit:<NOMBRE_DEL_TAG> --build-arg distro_tag=<NOMBRE_DEL_TAG> .
   ```
-  1. Reconstruir la imagen **Con cache**
+  2. Reconstruir la imagen **Con cache**
   ```
   cd docker\kalman
   docker build  -t kalmanrobotics/kalman-kit:<NOMBRE_DEL_TAG> --build-arg distro_tag=<NOMBRE_DEL_TAG> .
   ```
+- Para poder subir la imagen al Docker Hub de Kalman Robotics, primero debe iniciar sesión en su cuenta de Docker Hub:
+  ```
+  docker login
+  # NOTA: solo podrá subir la imagen quienes sean propietarios o colaboradores del repositorio kalmanrobotics/kalman-kit
+  ```
 - Una vez que la imagen se haya construido correctamente, puede etiquetarla y subirla a Docker Hub. Por ejemplo así: 
-    ```
-    docker push kalmanrobotics/kalman-kit:linux-latest
-    # o
-    docker push kalmanrobotics/kalman-kit:windows-latest
-    ```
+  ```
+  docker push kalmanrobotics/kalman-kit:linux-latest
+  # o
+  docker push kalmanrobotics/kalman-kit:windows-latest
+  ```

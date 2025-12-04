@@ -24,7 +24,7 @@ Descarga e instala [VcXsrv](https://sourceforge.net/projects/vcxsrv/)
 ## 3. Descargar proyecto
 ```cmd
 cd C:\
-git clone https://github.com/kalman-robotics/kit-kalman-install kalman\install
+git clone https://github.com/kalman-robotics/kit-kalman-docker kalman\install
 cd C:\kalman\install
 ```
 
