@@ -3,14 +3,14 @@ version: '3.8'
 services:
   nexus:
     # - Utilizar la siguiente línea si se desea usar una imagen preconstruida desde Docker Hub
-    # image: kalmanrobotics/kalman-kit:humble
+    # image: kalmanrobotics/kalman-kit:linux-latest 
     # - Utilizar los siguientes "build" e "image" si se desea construir la imagen localmente
     build:
       context: ./docker/kalman
       dockerfile: Dockerfile
       args:
         distro_tag: humble
-    image: kalmanrobotics/kalman-kit:humble    
+    image: kalmanrobotics/kalman-kit:linux-latest    
     container_name: nexus
     stdin_open: true
     tty: true
@@ -24,6 +24,14 @@ services:
       - LIBGL_ALWAYS_INDIRECT=0
       - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
       - MICROROS_DISABLE_SHM=1
+      # For Linux hosts
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1 # disable MIT-SHM to improve X11 applications      
+
+    volumes:
+      # For Linux hosts
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./.devcontainer/linux/.vscode:/ros2_ws/.vscode:ro      
 
     privileged: true
 

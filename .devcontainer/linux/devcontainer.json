@@ -1,0 +1,38 @@
+{
+	"name": "Kalman ROS 2 Humble",
+	"dockerComposeFile": "../../docker-compose.linux.yml",
+	"service": "nexus",
+	"workspaceFolder": "/kalman_ws",
+
+	// Configure tool-specific properties
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cpptools",
+				"ms-python.python",
+				"ms-iot.vscode-ros",
+				"twxs.cmake",
+				"ms-vscode.cmake-tools",
+				"redhat.vscode-xml",
+				"dotjoshjohnson.xml"
+			],
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"python.defaultInterpreterPath": "/usr/bin/python3"
+			}
+		}
+	},
+
+	// Post create command to set up ROS environment
+	"postCreateCommand": "echo 'Dev container ready! Run \"kalman\" to start.'",
+
+	// User to run as (root for ROS development)
+	"remoteUser": "root",
+
+	// Features
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "latest"
+		}
+	}
+}

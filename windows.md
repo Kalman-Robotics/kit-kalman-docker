@@ -32,7 +32,7 @@ cd C:\kalman\install
 
 ### Opción A: Desde internet (6 GB)
 ```cmd
-docker pull kalmanrobotics/kalman-kit:humble
+docker pull kalmanrobotics/kalman-kit::windows-latest
 ```
 
 ### Opción B: Desde USB (recomendado para aulas)
@@ -73,10 +73,10 @@ docker images kalmanrobotics/kalman-kit
 
 ```cmd
 REM 1. Descargar imagen
-docker pull kalmanrobotics/kalman-kit:humble
+docker pull kalmanrobotics/kalman-kit::windows-latest
 
 REM 2. Guardar en archivo
-docker save -o kalman-kit-humble.tar kalmanrobotics/kalman-kit:humble
+docker save -o kalman-kit-humble.tar kalmanrobotics/kalman-kit::windows-latest
 
 REM 3. Copiar archivo a USB (6 GB)
 ```

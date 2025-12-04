@@ -1,6 +1,6 @@
 {
 	"name": "Kalman ROS 2 Humble",
-	"dockerComposeFile": "../docker-compose.yml",
+	"dockerComposeFile": "../../docker-compose.windows.yml",
 	"service": "nexus",
 	"workspaceFolder": "/kalman_ws",
 

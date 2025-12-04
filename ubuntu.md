@@ -31,7 +31,7 @@ cd kit-kalman-docker
 ## 3. Descargar imagen Docker
 **Opción A: Desde internet**
 ```bash
-docker pull kalmanrobotics/kalman-kit:humble
+docker pull kalmanrobotics/kalman-kit:linux-latest
 ```
 
 **Opción B: Desde USB**

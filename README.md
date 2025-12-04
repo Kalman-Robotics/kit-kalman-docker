@@ -7,6 +7,9 @@ Este repositorio contiene instrucciones para levantar un Docker donde ejecutar e
   - [Requisitos:](#requisitos)
   - [Uso rápido:](#uso-rápido)
   - [Guías:](#guías)
+  - [Imagenes Docker pre-construidas](#imagenes-docker-pre-construidas)
+    - [Linux](#linux)
+    - [Windows](#windows)
 
 ## Consideraciones previas:
 - Si utiliza Ubuntu 22.04, no es necesario que utilice docker, siempre y cuando tenga instalado ROS2 Humble y micro-ROS. Caso contrario, puede seguir las instrucciones de este repositorio.
@@ -25,3 +28,12 @@ Este repositorio contiene instrucciones para levantar un Docker donde ejecutar e
 ## Guías:
 - [Ubuntu](ubuntu.md)
 - [Windows](windows.md)
+
+## Imagenes Docker pre-construidas
+### Linux
+- Image: `kalmanrobotics/kalman-kit:linux-latest`
+- Command: `docker pull kalmanrobotics/kalman-kit:linux-latest`
+
+### Windows
+- Image: `kalmanrobotics/kalman-kit:windows-latest`
+- Command: `docker pull kalmanrobotics/kalman-kit:windows-latest`
