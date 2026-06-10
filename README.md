@@ -35,7 +35,12 @@ Establece la comunicación entre la PC y el robot. Una vez activo, podrás inter
 
 **Paso 1 — Lanzar el agente**
 ```bash
-ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
+ros2 run micro_ros_agent micro_ros_agent udp4 --port <8880 + numero_de_tu_robot>
+```
+
+Ejemplo para el robot 11:
+```bash
+ros2 run micro_ros_agent micro_ros_agent udp4 --port 8891
 ```
 
 > ⚠️ Deja esta terminal abierta durante toda la sesión. Si se cierra, el robot pierde comunicación con la PC.
